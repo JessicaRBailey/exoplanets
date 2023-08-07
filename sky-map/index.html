@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <h1>Exoplanet Map</h1>
+  <!-- D3.js Library-->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- our script needs jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js" charset="utf-8"></script>
+
+  <div id="aladin-lite-div" style="width:100%px;height:700px;"></div>
+  
+  <input id="DSS" type="radio" name="survey" value="P/DSS2/color"><label for="DSS">DSS color<label>
+  <input id="DSS-blue" type="radio" name="survey" value="P/DSS2/blue"><label for="DSS-blue">DSS blue<label>
+  <input id="2MASS" type="radio" name="survey" value="P/2MASS/color"><label for="2MASS">2MASS<label>
+  <input id="allwise" type="radio" name="survey" value="P/allWISE/color"><label for="allwise">AllWISE<label>
+  <input id="glimpse" type="radio" name="survey" value="P/GLIMPSE360"><label for="glimpse">GLIMPSE 360<label>
+  
+  <!-- insert this snippet where you want Aladin Lite viewer to appear  -->
+  <script type="text/javascript" src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js" charset="utf-8"></script>
+  
+  <!-- Exoplanet Map Javascript-->
+  <script type="text/javascript" src ="markers.js"></script>
+
+</body>
+
+</html>
+
+
