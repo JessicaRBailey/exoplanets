@@ -33,18 +33,19 @@
 </head>
 <body>
     <div class="metric-container">
-        <div class="metric-box">
+      <div class="metric-box">
+        <h2>Confirmed Discoveries</h2>
+        <p id="confirmedDiscoveries"></p>
+      </div>
+      <div class="metric-box">
             <h2>Candidates</h2>
             <p id="candidates"></p>
-        </div>
-        <div class="metric-box">
+      </div>
+      <div class="metric-box">
             <h2>Planetary Systems</h2>
             <p id="planetarySystems"></p>
-        </div>
-        <div class="metric-box">
-            <h2>Confirmed Discoveries</h2>
-            <p id="confirmedDiscoveries"></p>
-        </div>
+      </div>
+        
     </div>
 
     <script>
@@ -53,7 +54,7 @@
                 const response = await fetch("/getMetrics");
                 const data = await response.json();
 
-                document.getElementById("candidates").textContent = data.Candidates;
+                document.getElementById("candidates").textContent = data.value;
                 document.getElementById("planetarySystems").textContent = data["Planetary Systems"];
                 document.getElementById("confirmedDiscoveries").textContent = data["Confirmed Discoveries"];
             } catch (error) {
