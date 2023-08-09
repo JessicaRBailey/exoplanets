@@ -10,11 +10,17 @@ collection = db['exoplanet_counts']
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    metrics_data = list(collection.find({}, {'_id': False}))
+    return render_template('index.html', metrics_data=metrics_data)
+
+# @app.route('/getMetrics')
+# def get_metrics():
+#     metrics_data = collection.find_one({}, {'_id': False})
+#     return jsonify(metrics_data)
 
 @app.route('/getMetrics')
 def get_metrics():
-    metrics_data = collection.find_one({}, {'_id': False})
+    metrics_data = list(collection.find({}, {'_id': False}))
     return jsonify(metrics_data)
 
 if __name__ == '__main__':
