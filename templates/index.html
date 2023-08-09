@@ -1,44 +1,66 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=chrome">
-    <title>Exoplanets</title>    
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .metric-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .metric-box {
+            background-color: midnightblue; /* Change background color */
+            color: white; /* Change text color */
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            flex: 1;
+        }
+    </style>
+    <title>Exoplanets</title>
 </head>
-
-
 <body>
-  <div class="metric-box">
-    <h2>Candidates</h2>
-    <p id="candidates"></p>
-  </div>
-  <div class="metric-box">
-    <h2>Planetary Systems</h2>
-    <p id="planetarySystems"></p>
-  </div>
-  <div class="metric-box">
-    <h2>Confirmed Discoveries</h2>
-    <p id="confirmedDiscoveries"></p>
-  </div>
+    <div class="metric-container">
+        <div class="metric-box">
+            <h2>Candidates</h2>
+            <p id="candidates"></p>
+        </div>
+        <div class="metric-box">
+            <h2>Planetary Systems</h2>
+            <p id="planetarySystems"></p>
+        </div>
+        <div class="metric-box">
+            <h2>Confirmed Discoveries</h2>
+            <p id="confirmedDiscoveries"></p>
+        </div>
+    </div>
 
-  <script>
-    async function fetchData() {
-      try {
-        const response = await fetch("/getMetrics");
-        const data = await response.json();
+    <script>
+        async function fetchData() {
+            try {
+                const response = await fetch("/getMetrics");
+                const data = await response.json();
 
-        document.getElementById("candidates").textContent = data.Candidates;
-        document.getElementById("planetarySystems").textContent = data["Planetary Systems"];
-        document.getElementById("confirmedDiscoveries").textContent = data["Confirmed Discoveries"];
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    }
+                document.getElementById("candidates").textContent = data.Candidates;
+                document.getElementById("planetarySystems").textContent = data["Planetary Systems"];
+                document.getElementById("confirmedDiscoveries").textContent = data["Confirmed Discoveries"];
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
 
-    fetchData();
-  </script>
+        fetchData();
+    </script>
 </body>
 </html>
