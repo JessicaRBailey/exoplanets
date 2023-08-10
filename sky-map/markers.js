@@ -10,25 +10,35 @@ A.init.then(() => {
     target: 'M 20'
   });
 
+  // Create layer to hold markers for scientist approved
+  let scientistApproved = A.catalog({name: 'Scientist Approved Earthlike Planets'});
+
+  // Add markers
+  let markera = A.marker(11.248632, -15.2741085, {popupTitle: 'LHS 1140 b', size: 2, color: '#FF0000'});
+  let markerb = A.marker(259.7510609, -34.9977651, {popupTitle: 'GJ 667 C c', size: 2, color: '#FF0000'});
+  let markerc = A.marker(97.0957165, -65.5786149, {popupTitle: 'TOI-700 e', size: 2, color: '#FF0000'});
+
+  scientistApproved.addSources([markera, markerb, markerc])
+
+  aladin.addCatalog(scientistApproved);
+
   // Create a layer to hold markers for the solar system objects
-  let solarSystemLayer = A.catalog({name: 'Solar System', color: '#FFFAFA'});
+  let earthlikeLayer = A.catalog({name: 'Earthlike Planets'});
 
-  // Add markers for the solar system objects
-  let sunMarker = A.marker(286.13, 63.87, {popupTitle: 'Sun', size: 2});
-  let mercuryMarker = A.marker(281.01, -23.44, {popupTitle: 'Mercury', size: 2});
-  let venusMarker = A.marker(272.76, -22.69, {popupTitle: 'Venus', size: 2});
-  let earthMarker = A.marker(270.00, 0.00, {popupTitle: 'Earth', size: 2});
-  let marsMarker = A.marker(317.68, 1.78, {popupTitle: 'Mars', size: 2});
-  let jupiterMarker = A.marker(268.05, -22.60, {popupTitle: 'Jupiter', size: 2});
-  let saturnMarker = A.marker(290.12, -20.99, {popupTitle: 'Saturn', size: 2});
-  let uranusMarker = A.marker(2.57, 15.87, {popupTitle: 'Uranus', size: 2});
-  let neptuneMarker = A.marker(326.03, -8.74, {popupTitle: 'Neptune', size: 2});
-  let plutoMarker = A.marker(210.05, -17.38, {popupTitle: 'Pluto', size: 2});
+  // Add markers for the earthlike planets objects
+  let markerd = A.marker(217.3934657, -62.6761821, {popupTitle: 'Proxima Cen b', size: 2, color: 'blue'});
+  let markere = A.marker(346.6263919, -5.0434618, {popupTitle: 'TRAPPIST-1e', size: 2, color: 'blue'});
+  let markerf = A.marker(346.6263919, -5.0434618, {popupTitle: 'TRAPPIST-1g', size: 2, color: 'blue'});
+  let markerg = A.marker(346.6263919, -5.0434618, {popupTitle: 'TRAPPIST-1f', size: 2, color: 'blue'});
+  let markerh = A.marker(296.003752, 44.2775861, {popupTitle: 'Kepler-452 b', size: 2, color: 'blue'});
+  let markeri = A.marker(298.652736, 43.9549884, {popupTitle: 'Kepler-186 f', size: 2, color: 'blue'});
+  let markerj = A.marker(176.9376036, 0.7992898, {popupTitle: 'Ross 128 b', size: 2, color: 'blue'});
+  let markerk = A.marker(259.7510609, -34.9977651, {popupTitle: 'GJ 667 C c', size: 2, color: 'blue'});
 
-  solarSystemLayer.addSources([sunMarker, mercuryMarker, venusMarker, earthMarker, marsMarker, jupiterMarker, saturnMarker, uranusMarker, neptuneMarker, plutoMarker]);
+  earthlikeLayer.addSources([markerd, markere, markerf, markerg, markerh, markeri, markerj, markerk]);
 
   // Add the solar system layer to the Aladin Lite map
-  aladin.addCatalog(solarSystemLayer);
+  aladin.addCatalog(earthlikeLayer);
 
   // Create a layer to hold markers for Exoplanets
   let markerLayer = A.catalog({color: 'magenta', visible: false, name: 'Exoplanets'});
