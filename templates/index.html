@@ -1,53 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" type="module">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=chrome">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 45vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-
-        .metric-container {
-            display: flex;
-            gap: 20px;
-        }
-
-        .metric-box {
-            background-color: midnightblue; 
-            color: white; 
-            border: 1px solid #ccc;
-            padding: 2px;
-            border-radius: 8px;
-            flex: 1;
-            text-align: center;
-            font-size: 30px;
-        }
-    </style>
     <title>Exoplanets</title>
-</head>
-<body>
-    <div class="metric-container">
-      <div class="metric-box">
-        <h3>Confirmed Discoveries</h3>
-        <p id="confirmedDiscoveries">{{ metrics_data[0].value }}</p>
-      </div>
-      <div class="metric-box">
-        <h3>Candidates</h3>
-        <p id="candidates">{{ metrics_data[1].value }}</p>
-      </div>
-      <div class="metric-box">
-        <h3>Planetary Systems</h3>
-        <p id="planetarySystems">{{ metrics_data[2].value }}</p>
-     </div>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <style>
+      body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 45vh;
+          margin: 0;
+          background-color: #f0f0f0;  
+          font-family: "Open Sans", sans-serif;
+          font-size: 16px;
+          padding: 40px;
+      }
         
-    </div>
+      h1 {
+          font-size: 2.5em;
+          font-weight: 700;
+          color: #ff9900;
+          margin-bottom: 20px;
+      }
+      a {
+          color: #336699;
+      }
+      a:hover {
+          color: #ff3366;
+      }
+      .container {
+          max-width: 800px;
+          margin: 0 auto;
+      }
+      .header {
+          text-align: center;
+          margin-bottom: 40px;
+      }
+      .main-content {
+          margin-bottom: 40px;
+          line-height: 1.6;
+      }
+      .team-members {
+          font-weight: bold;
+          color: #333;
+      }
+      .project-details li {
+          margin-bottom: 10px;
+      }
+      .conclusion {
+          margin-top: 40px;
+      }
+      .footer {
+          text-align: center;
+          margin-top: 40px;
+          color: #777;
+      }
+
+      .metric-container {
+          display: flex;
+          gap: 20px;
+      }
+
+      .metric-box {
+          background-color: midnightblue; 
+          color: white; 
+          border: 1px solid #ccc;
+          padding: 2px;
+          border-radius: 8px;
+          flex: 1;
+          text-align: center;
+          font-size: 30px;
+      }
+    </style>
+</head>
+
+<body>
+    
 
 
     <script>
@@ -72,17 +104,84 @@
             console.error("Error:", error);
         }
     }
-    
     fetchData();
-    Make sure that you're correctly accessing the value property of each metric in both your HTML template and JavaScript code. Additionally, ensure that the metrics_data variable is being passed from Flask to the template as shown in the Flask route.
-    
-    If you've confirmed that the metrics_data variable is correctly passed, and you're still encountering the issue, please share the updated code snippets for the Flask route, HTML template, and JavaScript code so that I can take a closer look and help you further.
-    
-    
-    
-    
-    
-    
     </script>
+
+    <div class="container">
+
+      <div class="metric-container">
+        <div class="metric-box">
+          <h3>Confirmed Discoveries</h3>
+          <p id="confirmedDiscoveries">{{ metrics_data[0].value }}</p>
+        </div>
+        <div class="metric-box">
+          <h3>Candidates</h3>
+          <p id="candidates">{{ metrics_data[1].value }}</p>
+        </div>
+        <div class="metric-box">
+          <h3>Planetary Systems</h3>
+          <p id="planetarySystems">{{ metrics_data[2].value }}</p>
+       </div>
+          
+      </div>
+
+      <div class="header">
+          <h1>Exoplanets</h1>
+          <a href="Data.html">Data</a>
+      </div>
+      <div class="main-content">
+          <h2>What are Exoplanets?
+          </h2>
+          <p>Exoplanets are planets that are outside of our solar system. The first exoplanet was confirmed in 1992 and today we are discovering new exoplanets every day. We find them using many different observational techniques, including microlensing and by transit across their star. NASA and space agencies around the world are collecting data on every exoplanet they find, but the most interesting ones are those that are Earth-like, in their star’s Goldilock’s (or habitable) Zone, and nearby.</p>
+              
+          <p>Here, we use data generously shared by NASA Exoplanet Archive's Table Access Protocol to explore the exoplanets found to date. Take a look at a few exoplanets like Earth, filter graphs of the known exoplanets to look at ones like Earth or in their Goldilocks Zone, and explore the position of known exoplanets on the space map.</p>
+      </div>
+
+      <div style="height: 40px;">
+      </div>
+  
+      <div class="main-content">
+          <h2>Explore some exoplanets of note</h2>
+          <p>Take a closer look at Proxima, our closest exoplanet, with this interactive 3D model:</p>
+          <a href="https://exoplanets.nasa.gov/resources/2211/proxima-b-3d-model/#:~:text=At%20only%20four%20light%2Dyears,discovery%20was%20announced%20in%202016" target="_blank">Visit Proxima 3D Model</a>
+          <p>Take a closer look at TOI 700 e, an exoplanet discovered earlier this year that is Earth sized and in it's Goldilock's Zone, with this interactive 3D model:</p>
+          <a href="https://exoplanets.nasa.gov/exoplanet-catalog/8729/toi-700-e/ " target="_blank">Visit TOI 700 e 3D Model</a>
+          <p>Take a closer look at GJ 667 C c, another very earth-like exoplanet that scientists think could support life, with this interactive 3D model:</p>
+          <a href="https://exoplanets.nasa.gov/exoplanet-catalog/6541/gj-667-c-c/ " target="_blank">Visit GJ 667 C c 3D Model</a>
+      </div>
+
+      <div style="height: 40px;">
+      </div>
+     
+      <!-- Insert Chart # of Exoplanets here-->
+      <div class="main-content">
+          <p> # of Exoplanets Description
+          </p>
+      </div>
+
+      <div style="height: 40px;">
+      </div>
+      
+      <!-- Insert Space Map here-->
+      <div class="main-content">
+          <p> Space Map Description
+          </p>
+      </div>
+      <div style="height: 40px;">
+      </div>
+      
+      <div class="team-members">
+        <p>Team Members: Jessica Bailey, Yun Kim, Judy Xia, Devanshi Mathur and Andrew Brannon</p>
+      </div>
+  
+      <div class="footer">
+        <p>&copy; 2023 Team 8</p>
+      </div>
+
+    </div>
+   
+  </div>
+
+ 
 </body>
 </html>
