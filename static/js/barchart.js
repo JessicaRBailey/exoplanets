@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Fetch the JSON data
-  fetch('exoplanet_data.json')
+  fetch('/getjson')
     .then(response => response.json())
     .then(data => {
       // Prepare data for the chart

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let outliersCount; // Declare the outliersCount variable outside the fetch block
 
   // Fetch the data
-  fetch('exoplanet_data.json')
+  fetch('/getjson')
     .then(response => response.json())
     .then(data => {
       // Calculate the count of discoveries per year

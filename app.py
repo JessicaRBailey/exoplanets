@@ -1,69 +1,32 @@
-"""A Python Flask REST API BoilerPlate (CRUD) Style"""
-
-import argparse
-import os
-from flask import Flask, jsonify, make_response
-from flask_cors import CORS
-from flask_swagger_ui import get_swaggerui_blueprint
-from api_routes import request_api
-
-APP = Flask(__name__)
-
-### swagger specific ###
-SWAGGER_URL = '/swagger'
-API_URL = '/static/swagger.json'
-SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
-    SWAGGER_URL,
-    API_URL,
-    config={
-        'app_name': "Exoplanet Data API"
-    }
-)
-APP.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
-### end swagger specific ###
+from flask import Flask, render_template, jsonify, send_file
+from pymongo import MongoClient
 
 
-APP.register_blueprint(request_api.get_blueprint())
+app = Flask(__name__)
 
+# Connect to MongoDB
+client = MongoClient(port=27017)
+db = client['ExoplanetDB']
+collection = db['exoplanet_counts']
 
-@APP.errorhandler(400)
-def handle_400_error(_error):
-    """Return a http 400 error to client"""
-    return make_response(jsonify({'error': 'Misunderstood'}), 400)
+@app.route('/')
+def index():
+    metrics_data = list(collection.find({}, {'_id': False}))
+    return render_template('index.html', metrics_data=metrics_data)
 
+# @app.route('/getMetrics')
+# def get_metrics():
+#     metrics_data = collection.find_one({}, {'_id': False})
+#     return jsonify(metrics_data)
 
-@APP.errorhandler(401)
-def handle_401_error(_error):
-    """Return a http 401 error to client"""
-    return make_response(jsonify({'error': 'Unauthorised'}), 401)
+@app.route('/getjson')
+def get_json():
+    return send_file('static/json/exoplanet_data.json', mimetype = 'application/json')
 
-
-@APP.errorhandler(404)
-def handle_404_error(_error):
-    """Return a http 404 error to client"""
-    return make_response(jsonify({'error': 'Not found'}), 404)
-
-
-@APP.errorhandler(500)
-def handle_500_error(_error):
-    """Return a http 500 error to client"""
-    return make_response(jsonify({'error': 'Server error'}), 500)
-
+@app.route('/getMetrics')
+def get_metrics():
+    metrics_data = list(collection.find({}, {'_id': False}))
+    return jsonify(metrics_data)
 
 if __name__ == '__main__':
-
-    PARSER = argparse.ArgumentParser(
-        description="Exoplanet API")
-
-    PARSER.add_argument('--debug', action='store_true',
-                        help="Use flask debug/dev mode with file change reloading")
-    ARGS = PARSER.parse_args()
-
-    PORT = int(os.environ.get('PORT', 5000))
-
-    if ARGS.debug:
-        print("Running in debug mode")
-        CORS = CORS(APP)
-        APP.run(host='0.0.0.0', port=PORT, debug=True)
-    else:
-        APP.run(host='0.0.0.0', port=PORT, debug=False)
+    app.run(debug=True)

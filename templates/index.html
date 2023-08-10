@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=chrome">
     <title>Exoplanets</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
-    <script src="scatterplot.js"></script>
-    <script src="barchart.js"></script>
-    <script type="text/javascript" src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js" charset="utf-8"></script>
+    <script src="static/js/scatterplot.js"></script>
+    <script src="static/js/barchart.js"></script>
+    
 
     <script>
       document.addEventListener("DOMContentLoaded", function() {
@@ -59,7 +59,7 @@
       a:hover {
           color: #ff3366;
       }
-      .container {
+      .container1 {
           max-width: 800px;
           margin: 0 auto;
       }
@@ -105,20 +105,19 @@
     </style>
 </head>
 
-<body>
-    
-
+<body> 
 
     <script>
       async function fetchData() {
         try {
             const response = await fetch("/getMetrics");
             const data = await response.json();
-    
+           
             data.forEach(metric => {
+            
                 const metricName = metric.key;
                 const metricValue = metric.value;
-    
+                
                 if (metricName === "Candidates") {
                     document.getElementById("candidates").textContent = metricValue;
                 } else if (metricName === "Planetary Systems") {
@@ -134,7 +133,7 @@
     fetchData();
     </script>
 
-    <div class="container">
+    <div class="container1">
 
       <div class="metric-container">
         <div class="metric-box">
@@ -231,7 +230,7 @@
                     </li>
                 </ul>
                 <p id="caption">
-                    <script src="bymethod.js"></script>
+                    <script src="static/js/bymethod.js"></script>
                 </p>
             </div>
             <!--Planet Distance from Star-->
@@ -239,7 +238,7 @@
                 <h2 class="panel_title"> Exoplanet Distance from Host Star</h2>
                 <canvas id="scatterChart"></canvas>
             </div>
-            <button class="arrow-button"onclick="jumpToNextItem()">></button>
+            <button class="arrow-button"onclick="jumpToNextItem()"></button>
           </div>
       </div>
 
@@ -249,12 +248,14 @@
 
 
       
-      <!-- Insert Space Map here-->
-      <div class="main-content">
+       <!-- Insert Space Map here-->
+       <div class="main-content">
+        <script type="text/javascript" src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js" charset="utf-8"></script>
           <div id="aladin-lite-div" style="width:device-width; height: 700px"></div>  
           <!-- Exoplanet Map Javascript-->
-          <script type="text/javascript" src ="markers.js"></script>
-      </div>
+          <script type="text/javascript" src ="static/js/markers.js"></script>
+      </div> 
+
 
       <div style="height: 40px;">
       </div>

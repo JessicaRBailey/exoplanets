@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Fetch the JSON data
-    fetch('exoplanet_data.json')
+    fetch('/getjson')
       .then(response => response.json())
       .then(data => {
+  
         // Count how many for each method
         const methods = {};
         const total = data.length;
