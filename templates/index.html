@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=chrome">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 45vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .metric-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .metric-box {
+            background-color: midnightblue; 
+            color: white; 
+            border: 1px solid #ccc;
+            padding: 2px;
+            border-radius: 8px;
+            flex: 1;
+            text-align: center;
+            font-size: 30px;
+        }
+    </style>
+    <title>Exoplanets</title>
+</head>
+<body>
+    <div class="metric-container">
+      <div class="metric-box">
+        <h3>Confirmed Discoveries</h3>
+        <p id="confirmedDiscoveries">{{ metrics_data[0].value }}</p>
+      </div>
+      <div class="metric-box">
+        <h3>Candidates</h3>
+        <p id="candidates">{{ metrics_data[1].value }}</p>
+      </div>
+      <div class="metric-box">
+        <h3>Planetary Systems</h3>
+        <p id="planetarySystems">{{ metrics_data[2].value }}</p>
+     </div>
+        
+    </div>
+
+
+    <script>
+      async function fetchData() {
+        try {
+            const response = await fetch("/getMetrics");
+            const data = await response.json();
+    
+            data.forEach(metric => {
+                const metricName = metric.key;
+                const metricValue = metric.value;
+    
+                if (metricName === "Candidates") {
+                    document.getElementById("candidates").textContent = metricValue;
+                } else if (metricName === "Planetary Systems") {
+                    document.getElementById("planetarySystems").textContent = metricValue;
+                } else if (metricName === "Confirmed Discoveries") {
+                    document.getElementById("confirmedDiscoveries").textContent = metricValue;
+                }
+            });
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+    
+    fetchData();
+    Make sure that you're correctly accessing the value property of each metric in both your HTML template and JavaScript code. Additionally, ensure that the metrics_data variable is being passed from Flask to the template as shown in the Flask route.
+    
+    If you've confirmed that the metrics_data variable is correctly passed, and you're still encountering the issue, please share the updated code snippets for the Flask route, HTML template, and JavaScript code so that I can take a closer look and help you further.
+    
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>
