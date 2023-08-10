@@ -44,7 +44,7 @@ A.init.then(() => {
   let markerLayer = A.catalog({color: 'magenta', visible: false, name: 'Exoplanets'});
 
   // Load JSON data using fetch
-  fetch('exoplanet_data.json')
+  fetch('../exoplanet_data.json')
     .then(response => response.json())
     .then(data => {
       // Add markers to the marker layer
