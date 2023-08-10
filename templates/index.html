@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=chrome">
     <title>Exoplanets</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js" charset="utf-8"></script>
     <style>
       body {
           display: flex;
@@ -164,12 +165,17 @@
       
       <!-- Insert Space Map here-->
       <div class="main-content">
-          <p> Space Map Description
-          </p>
+          <p> Space Map Description</p>
+          <div id="aladin-lite-div" style="width:device-width; height: 700px"></div>  
+          <!-- Exoplanet Map Javascript-->
+          <script type="text/javascript" src ="markers.js"></script>
       </div>
+
+
+
       <div style="height: 40px;">
       </div>
-      
+
       <div class="team-members">
         <p>Team Members: Jessica Bailey, Yun Kim, Judy Xia, Devanshi Mathur and Andrew Brannon</p>
       </div>
