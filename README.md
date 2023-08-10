@@ -21,7 +21,7 @@ To compile our page, we used Flask API, webscraping, MongoDB, HTML & CSS, and Ja
 Data and libraries for this project come from the following sources
 * Nasa Jet Propulsion Laboratory, California Institute of Technology (https://exoplanetarchive.ipac.caltech.edu/docs/API_queries.html)
 * Chart.js (https://www.chartjs.org/)
-* Space Map ()
+* Space Map (https://github.com/cds-astro/aladin-lite)
 * Thank you to our teacher, teaching assistants, and tutors at UC Berkeley Extension, and to ChatGPT for invaluable help putting this together!
 
 Contributors:  Yun Kim, Devanshi Mathur, Judy Xia, Jessica Bailey, Andrew Brannon
