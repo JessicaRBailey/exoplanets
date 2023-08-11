@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-  let outliersCount; // Declare the outliersCount variable outside the fetch block
+  let outliersCount; 
 
   // Fetch the data
   fetch('/getjson')

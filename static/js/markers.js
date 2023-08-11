@@ -22,8 +22,8 @@ A.init.then(() => {
 
   aladin.addCatalog(scientistApproved);
 
-  // Create a layer to hold markers for the solar system objects
-  let earthlikeLayer = A.catalog({name: 'Earthlike Planets'});
+  // Create a layer to hold markers for the earthlike planets that exist in our
+  let earthlikeLayer = A.catalog({name: 'Earthlike Planets in Goldilock Zone'});
 
   // Add markers for the earthlike planets objects
   let markerd = A.marker(217.3934657, -62.6761821, {popupTitle: 'Proxima Cen b', size: 2, color: 'blue'});
@@ -34,10 +34,13 @@ A.init.then(() => {
   let markeri = A.marker(298.652736, 43.9549884, {popupTitle: 'Kepler-186 f', size: 2, color: 'blue'});
   let markerj = A.marker(176.9376036, 0.7992898, {popupTitle: 'Ross 128 b', size: 2, color: 'blue'});
   let markerk = A.marker(259.7510609, -34.9977651, {popupTitle: 'GJ 667 C c', size: 2, color: 'blue'});
+  let markerl = A.marker(11.248632, -15.2741085, {popupTitle: 'LHS 1140 b', size: 2, color: 'blue'});
+  let markerm = A.marker(259.7510609, -34.9977651, {popupTitle: 'GJ 667 C c', size: 2, color: 'blue'});
+  let markern = A.marker(97.0957165, -65.5786149, {popupTitle: 'TOI-700 e', size: 2, color: 'blue'});
 
-  earthlikeLayer.addSources([markerd, markere, markerf, markerg, markerh, markeri, markerj, markerk]);
+  earthlikeLayer.addSources([markerd, markere, markerf, markerg, markerh, markeri, markerj, markerk, markerl, markerm, markern]);
 
-  // Add the solar system layer to the Aladin Lite map
+  // Add the earthlike planets to the Aladin Lite map
   aladin.addCatalog(earthlikeLayer);
 
   // Create a layer to hold markers for Exoplanets
