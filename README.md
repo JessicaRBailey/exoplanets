@@ -10,6 +10,8 @@ Three metrics showing the number of exoplanets confirmed, the number unconfirmed
 ### Discovery Methods
 There are multiple ways astronomers have to discover exoplanets.  The most common way is to observe them transiting their host star.  Large space telescopes such as Kepler, TESS, and now the James Webb Space Telescope record regular dips in the brightness of a star that indicate the planet is passing in between the host star and Earth, blocking light.  This chart was created using data from NASAs Exoplanet Archive's Table Access Protocol API at: https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+*+from+pscomppars&format=json and was interpreted with help from a csv file provided to explain key meanings (https://exoplanetarchive.ipac.caltech.edu/docs/API_PS_columns.html).  This chart is animated using Chart.js.  Visitors can select and deselect transit methods to explore all discovery types.  
 
+![image](https://github.com/JessicaRBailey/exoplanets/assets/131318832/e0b845c6-3666-4da1-9483-3bfd71f58f58)
+
 ![image](https://github.com/JessicaRBailey/exoplanets/assets/131318832/867bde5e-79c9-4515-a3f4-b9daa17ccb86)
 
 ### Distance from Host Star
